@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import './App.css';
+
 import AddItem from './AddItem';
 import SearchBar from './SearchBar';
 import ItemsDisplay from './ItemsDisplay';
+
+import styled from "styled-components";
+const Title=styled.h1 `
+  color: ${props => props.color ? props.color:"black"};
+`
 
 
 
@@ -12,7 +17,7 @@ function App() {
 
   const updateFilters = (searchParams)=> {
     setFilters(searchParams);
-  };
+  }; 
   const addItemToData=(item)=>{
     let items = data["items"];
     item.id = items.length;
@@ -26,10 +31,24 @@ function App() {
 
 
   return (
-    <div className="App">
-      <SearchBar updateSearchParams={updateFilters}/>
-      <ItemsDisplay items={data["items"]}/>
-      <AddItem addItem={addItemToData}/>
+    <div className="container">
+          <Title color="red">Test</Title>
+          
+      <div className="row mt-3">
+        <SearchBar updateSearchParams={updateFilters}/>
+      </div>
+      
+      <div className="row mt-3">
+      
+        <AddItem addItem={addItemToData}/>
+      </div>
+        <div className="row mt-3">
+        <ItemsDisplay items={data.items} />
+      </div>
+
+      
+      
+      
       
       
 
