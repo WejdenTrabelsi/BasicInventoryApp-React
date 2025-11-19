@@ -1,38 +1,40 @@
-
+import { useState } from 'react';
 import './App.css';
-import Info from "./Info.js";
+import AddItem from './AddItem';
+import SearchBar from './SearchBar';
+import ItemsDisplay from './ItemsDisplay';
+
+
+
 function App() {
+  const [Filters,setFilters]=useState({});
+  const [data,setData]=useState({items:[]});
+
+  const updateFilters = (searchParams)=> {
+    setFilters(searchParams);
+  };
+  const addItemToData=(item)=>{
+    let items = data["items"];
+    item.id = items.length;
+    items.push(item)
+    setData({items:items});
+    console.log(data);
+
+  };
+
+
+
+
   return (
     <div className="App">
-    <Info/>
-    <AddItem/>
-    <AddItem/>
-    <AddItem/>
-    </div>
-  );
-}
-/*
-function Info(){
-const title ="This is my title.";
-const showTitle=true;
+      <SearchBar updateSearchParams={updateFilters}/>
+      <ItemsDisplay items={data["items"]}/>
+      <AddItem addItem={addItemToData}/>
+      
+      
 
-  return(
-    <div>
-    
-      <h1>{showTitle ?title:"No title"}</h1>
-      <p>Manage Your stuff.</p>
     </div>
   );
 }
-  */
-function AddItem (){
-  const value="default"
-  return(
-    <form>
-      <label for ="text-form">Type something</label>
-      <input type="text" value={value} id="text-form"></input>
-      <Info/>
-    </form>
-  )
-}
+
 export default App;
