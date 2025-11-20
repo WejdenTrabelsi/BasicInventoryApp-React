@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //as we mentionned the root in index.html is import it's where we nject our app 
 // so here we're injecting the <App/> inside it 

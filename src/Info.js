@@ -1,22 +1,32 @@
 import React from "react";
 
 class Info extends React.Component {
-  render() {
-    const title = "This is my title.";
-    const showTitle = true;
+  constructor(props){
+    super(props);
+    this.state = {
+      count:0,
+      title:"hello",
+    };
+  }
+  buttonPressed(){
+    this.setState({
+      count : this.state.count + 1,
+    });
 
-    if (showTitle) {
-      return (
-        <div>
-          <h1>{title}</h1>
-          <h2>{2 + 2}</h2>
-          <p>Manage Your stuff.</p>
-        </div>
-      );
-    } else {
-      return <p>emptyyy </p>;
+  }
+  render() {
+    return(
+      <div>
+    <p>Count : {this.state.count}</p>
+    <button onClick={()=>this.buttonPressed()}>Click me </button>
+    </div>
+
+     )
     }
   }
-}
+
+
+
 
 export default Info;
+ 
